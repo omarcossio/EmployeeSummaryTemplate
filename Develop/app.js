@@ -10,13 +10,92 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const localArray = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+function init() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: "What is the employee's name?",
+            },
+
+            {
+                type: 'input',
+                name: 'id',
+                message: "What is the employee's id",
+            },
+
+            {
+                type: 'input',
+                name: 'email',
+                message: "What is the employee's email address?",
+            },
+
+            {
+                type: 'list',
+                name: 'role',
+                message: "What is the employee's role?",
+                choices: ['Manager', 'Engineer', 'Intern'],
+            },
+
+            {
+                type: 'input',
+                name: 'officeNumber',
+                message: "What is the employee's office Number?",
+                when: (answers) => answers.role == "Manager",
+            },
+
+            {
+                type: 'input',
+                name: 'github',
+                message: "What is the employee's github username?",
+                when: (answers) => answers.role == "Engineer",
+            },
+
+            {
+                type: 'input',
+                name: 'school',
+                message: "What school did the employee attend?",
+                when: (answers) => answers.role == "Intern",
+            }
+
+            
+        ])
+        .then((data => {
+
+            switch (data.role) {
+                case "Manager":
+                    const m = new Manager(data.name, data.id, data.email, data.officeNumber);
+                    localArray.push(m);
+                    break;
+                case "Engineer":
+                    const e = new Engineer(data.name, data.id, data.email, data.github);
+                    localArray.push(e);
+                    break;
+                case "Intern":
+                    const i = new Intern(data.name, data.id, data.email, data.school);
+                    localArray.push(i);
+                    break;
+                default: console.log("Nothing is happening");
+
+                const employeeDivs = render(localArray);
+            }
+            
+        }))
+
+
+}
+init();
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
