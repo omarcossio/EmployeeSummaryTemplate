@@ -14,6 +14,10 @@ const render = require("./lib/htmlRenderer");
 
 const localArray = [];
 
+function validateEmpty(name){
+    return name != '';
+}
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 function init() {
@@ -23,18 +27,21 @@ function init() {
                 type: 'input',
                 name: 'name',
                 message: "What is the employee's name?",
+                validate: validateEmpty,
             },
 
             {
                 type: 'input',
                 name: 'id',
                 message: "What is the employee's id",
+                validate: validateEmpty,
             },
 
             {
                 type: 'input',
                 name: 'email',
                 message: "What is the employee's email address?",
+                validate: validateEmpty,
             },
 
             {
@@ -57,6 +64,7 @@ function init() {
                 name: 'officeNumber',
                 message: "What is the employee's office Number?",
                 when: (answers) => answers.role == "Manager",
+                validate: validateEmpty,
             },
 
             {
@@ -64,6 +72,7 @@ function init() {
                 name: 'github',
                 message: "What is the employee's github username?",
                 when: (answers) => answers.role == "Engineer",
+                validate: validateEmpty,
             },
 
             {
@@ -71,6 +80,7 @@ function init() {
                 name: 'school',
                 message: "What school did the employee attend?",
                 when: (answers) => answers.role == "Intern",
+                validate: validateEmpty,
             },
             {
                 type: 'confirm',
