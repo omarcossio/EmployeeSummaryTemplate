@@ -38,7 +38,7 @@ Sample Results
 
 
 ## Usage
-The intended user for this application is someone who needs to generate a webpage that displays their team's basic information so that they can have quick access to emails and GitHub profiles. You can see the full demo [here](https://drive.google.com/file/d/17tSvS8Qeu5RJlYOCNNu16PnxBKvwzvnW/view).
+The intended user for this application is someone who needs to generate a webpage that displays their team's basic information so that they can have quick access to emails and GitHub profiles. You can see the full demo [here](https://drive.google.com/file/d/17tSvS8Qeu5RJlYOCNNu16PnxBKvwzvnW/view). You can also find a sample output file [here](output/teamSample.html).
 
 
 ## Tests
@@ -59,6 +59,7 @@ If you have any questions, please feel free to reach me at
 
 ## Links
 
-[Full Demo Video](https://drive.google.com/file/d/17tSvS8Qeu5RJlYOCNNu16PnxBKvwzvnW/view)
+* [Full Demo Video](https://drive.google.com/file/d/17tSvS8Qeu5RJlYOCNNu16PnxBKvwzvnW/view)
+* [Sample Ouput File](output/teamSample.html)
 
 
